@@ -9,7 +9,8 @@ export const LazyMap = dynamic(() => import('@/components/map/MapComponent'), { 
 
 async function getData() {
 
-	const res = await fetch(URL)
+	console.log('Revaliodate!');
+	const res = await fetch(URL, { next: { revalidate: 1000 } })
 
 	if (!res.ok) {
 		throw new Error('Failed to fetch data')

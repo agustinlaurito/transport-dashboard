@@ -8,7 +8,7 @@ export default function Layout({ children }) {
 	return(
 		<div>
 			<NavBar />
-			<div>
+			<div className="h-[97vh] overflow-y-auto">
 				{children}
 			</div>
 

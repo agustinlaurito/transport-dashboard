@@ -1,25 +1,31 @@
+'use client'
 import React from "react";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button } from "@nextui-org/react";
+import { usePathname } from "next/navigation";
+
 
 export default function NavBar() {
+
+	const pathname = usePathname();
+
 	return (
-		<Navbar isBordered height='7vh'>
+		<Navbar isBlurred height='7vh'>
 			<NavbarBrand>
 				<p className="hidden font-bold text-inherit">Transportify</p>
 			</NavbarBrand>
 			<NavbarContent className="sm:flex gap-4" justify="center">
-				<NavbarItem isActive>
-					<Link>
+				<NavbarItem isActive={pathname.includes('map')}>
+					<Link color={pathname.includes('map') ? 'foreground' : 'primary'} href="/aplication/map">
 						Mapa
 					</Link>
 				</NavbarItem>
-				<NavbarItem >
-					<Link color="foreground" href="#">
+				<NavbarItem isActive={pathname.includes('buses')}>
+					<Link color={pathname.includes('buses') ? 'foreground' : 'primary'} href="/aplication/buses">
 						Buses Cercanos
 					</Link>
 				</NavbarItem>
-				<NavbarItem>
-					<Link color="foreground" href="#">
+				<NavbarItem isActive={pathname.includes('stops')}>
+					<Link color={pathname.includes('stops') ? 'foreground' : 'primary'} href="/aplication/stops" >
 						Paradas Cercanas
 					</Link>
 				</NavbarItem>
